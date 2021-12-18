@@ -7,7 +7,7 @@ from fileHandle import *
 from util import *
 from argsHandle import *
 
-args = getArgs(["--args"]).args
+args = getArgs(["--args","--index"])
 
 bin = getAllFiles("bin")
 
@@ -24,7 +24,11 @@ for b in bin:
     print(str(i)+" : "+package[i])
     i = i + 1
 
-index = int(input("index:"))
+index = None
+if(args.index == None):
+    index = int(input("index:"))
+else:
+    index = int(args.index)
 
 cn = package[index].split(".")[-1]
 
@@ -55,5 +59,5 @@ call("echo @echo off > bat/"+cn+".bat",shell=True)
 call("echo cd .. >> bat/"+cn+".bat",shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
 
-call("java -classpath "+cp+" "+package[index]+" "+args,shell=True)
+call("java -classpath "+cp+" "+package[index]+" "+args.args,shell=True)
 
