@@ -5,6 +5,9 @@ from subprocess import call
 import dependency
 from fileHandle import *
 from util import *
+from argsHandle import *
+
+args = getArgs(["--args"]).args
 
 bin = getAllFiles("bin")
 
@@ -52,5 +55,5 @@ call("echo @echo off > bat/"+cn+".bat",shell=True)
 call("echo cd .. >> bat/"+cn+".bat",shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
 
-call("java -classpath "+cp+" "+package[index],shell=True)
+call("java -classpath "+cp+" "+package[index]+" "+args,shell=True)
 
