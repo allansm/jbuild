@@ -59,5 +59,9 @@ call("echo @echo off > bat/"+cn+".bat",shell=True)
 call("echo cd .. >> bat/"+cn+".bat",shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
 
-call("java -classpath "+cp+" "+package[index]+" "+args.args,shell=True)
-
+package[index] = package[index].replace("bin/","")
+print(package[index])
+if(args.args != None):
+    call("java -classpath "+cp+" "+package[index]+" "+args.args,shell=True)
+else:
+    call("java -classpath "+cp+" "+package[index],shell=True)
