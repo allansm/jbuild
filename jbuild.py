@@ -17,7 +17,7 @@ javac = []
 
 for f in src:
     if ".java" in f:
-        javac.append(os.path.dirname(f)+"\\"+"*.java")
+        javac.append(os.path.dirname(f)+"/"+"*.java")
 
 javac = list(dict.fromkeys(javac))
 

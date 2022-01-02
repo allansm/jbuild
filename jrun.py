@@ -17,7 +17,7 @@ package = []
 
 for b in bin:
     p = b.split(".")[0]
-    p2 = p.split("\\")
+    p2 = p.split("/")
     tmp = "."
     tmp = tmp.join(p2)
     package.append(tmp.replace("bin.",""))
@@ -59,8 +59,6 @@ call("echo @echo off > bat/"+cn+".bat",shell=True)
 call("echo cd .. >> bat/"+cn+".bat",shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
 
-package[index] = package[index].replace("bin/","")
-print(package[index])
 if(args.args != None):
     call("java -classpath "+cp+" "+package[index]+" "+args.args,shell=True)
 else:
