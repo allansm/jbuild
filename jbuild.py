@@ -24,15 +24,15 @@ javac = list(dict.fromkeys(javac))
 for line in javac:
     print(line)
 
-cp = "\"src;bin"
+cp = "\"src;bin;lib;lib/*"
 cplib = ""
-
+'''
 if(exists("lib")):
     cp+=";lib"
     lib = getAllFiles("lib")
     for f in lib:
         cplib+=";"+f
-
+'''
 if(exists(".lib")):
     for x in getLines(".lib"):
         cplib+=";"+x
