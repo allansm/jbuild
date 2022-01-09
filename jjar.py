@@ -25,10 +25,8 @@ if(args.runnable or args.r):
     manifest = "Manifest-Version: 1.0\n"
     manifest+= "Main-Class: "+mainclass+"\n"
     manifest+= "Class-Path:"
-    
     for n in ls("lib"):
         manifest+=" "+n.replace("\\","/")
-    
     manifest+="\n"
 
 jar+=" "+args.file
