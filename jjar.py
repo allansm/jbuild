@@ -4,7 +4,10 @@ from argsHandle import *
 from fileHandle import *
 from os import system,chdir
 
-args = getArgs(["package","?runnable","?r"])
+args = getArgs(["package","?runnable","?r","?all","?build"])
+
+if(args.build):
+    import jbuild
 
 jar = "jar cvf"
 
@@ -39,10 +42,21 @@ if(args.runnable or args.r):
     
     manifest+="\n"
 
-if(exists("bin/"+args.package.replace(".","/")+".class")):
-    jar+=" "+args.package.replace(".","/")+".class"
+if(args.all):
+    tmp = []
+    for n in getAllFiles("bin/"+args.package):
+        if(".class" in n):
+            tmp.append(dirname(n)+"/*.class")
+
+    tmp = list(dict.fromkeys(tmp))
+    for n in tmp:
+        jar+=" "+n.replace("bin/","")
+
 else:
-    jar+=" "+args.package.replace(".","/")+"/*.class"
+    if(exists("bin/"+args.package.replace(".","/")+".class")):
+        jar+=" "+args.package.replace(".","/")+".class"
+    else:
+        jar+=" "+args.package.replace(".","/")+"/*.class"
 
 print(jar)
 
