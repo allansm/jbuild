@@ -1,7 +1,7 @@
 from os import chdir
 from os import mkdir
 from os import getcwd
-import argparse
+import allansm.argparse
 
 parser = argparse.ArgumentParser(description='')
 

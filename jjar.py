@@ -1,7 +1,7 @@
 import dependency
 
-from argsHandle import *
-from fileHandle import *
+from allansm.argsHandle import *
+from allansm.fileHandle import *
 from os import system,chdir
 
 args = getArgs(["package","?runnable","?r","?all","?build"])

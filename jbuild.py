@@ -1,7 +1,7 @@
 import dependency
 
 import os
-from fileHandle import *
+from allansm.fileHandle import *
 from shutil import rmtree
 
 src = getAllFiles("src")
@@ -26,13 +26,7 @@ for line in javac:
 
 cp = "\"src;bin;lib;lib/*"
 cplib = ""
-'''
-if(exists("lib")):
-    cp+=";lib"
-    lib = getAllFiles("lib")
-    for f in lib:
-        cplib+=";"+f
-'''
+
 if(exists(".lib")):
     for x in getLines(".lib"):
         cplib+=";"+x

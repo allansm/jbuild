@@ -1,8 +1,8 @@
 import dependency
 
-from argsHandle import *
+from allansm.argsHandle import *
 from subprocess import call
-from fileHandle import *
+from allansm.fileHandle import *
 
 args = getArgs(["cp","package","--args"])
 

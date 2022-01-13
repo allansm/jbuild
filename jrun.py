@@ -3,9 +3,9 @@ import jbuild
 import os
 from subprocess import call
 import dependency
-from fileHandle import *
-from util import *
-from argsHandle import *
+from allansm.fileHandle import *
+from allansm.util import *
+from allansm.argsHandle import *
 
 args = getArgs(["--args","--index"])
 
