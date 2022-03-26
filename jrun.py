@@ -2,7 +2,6 @@ import jbuild
 
 import os
 from subprocess import call
-import dependency
 from allansm.fileHandle import *
 from allansm.util import *
 from allansm.argsHandle import *
@@ -24,11 +23,12 @@ for b in bin:
     print(str(i)+" : "+package[i])
     i = i + 1
 
-index = None
-if(args.index == None):
-    index = int(input("index:"))
-else:
-    index = int(args.index)
+index = args.index
+if(index == None):
+    if(len(package) == 1):
+        index = 0
+    else:
+        index = int(input("index:"))
 
 cn = package[index].split(".")[-1]
 

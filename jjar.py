@@ -1,5 +1,3 @@
-import dependency
-
 from allansm.argsHandle import *
 from allansm.fileHandle import *
 from os import system,chdir

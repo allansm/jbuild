@@ -1,5 +1,3 @@
-import dependency
-
 import os
 from allansm.fileHandle import *
 from shutil import rmtree

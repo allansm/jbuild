@@ -1,5 +1,3 @@
-import dependency
-
 from allansm.argsHandle import *
 from subprocess import call
 from allansm.fileHandle import *
