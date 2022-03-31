@@ -36,10 +36,11 @@ if(index == None):
 
 cn = package[index].split(".")[-1]
 
-try:
-    os.mkdir("bat")
-except:
-    dummy = ""
+remove("bat")
+remove("bash")
+
+mkdir("bat")
+mkdir("bash")
 
 cp = "\"src"+suffix+"bin"
 cplib = ""
@@ -62,6 +63,10 @@ clear()
 call("echo @echo off > bat/"+cn+".bat",shell=True)
 call("echo cd .. >> bat/"+cn+".bat",shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
+
+call("echo #!/bin/bash > bash/"+cn ,shell=True)
+call("echo cd .. >> bash/"+cn, shell=True)
+call("echo java -classpath "+cp+" "+package[index]+" >> bash/"+cn, shell=True)
 
 print(cp)
 
