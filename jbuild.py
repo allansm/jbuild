@@ -1,6 +1,12 @@
 import os
 from allansm.fileHandle import *
+from allansm.util import *
 from shutil import rmtree
+
+suffix = ":"
+
+if(isWindows()):
+    suffix=";"
 
 src = getAllFiles("src")
 
@@ -22,17 +28,18 @@ javac = list(dict.fromkeys(javac))
 for line in javac:
     print(line)
 
-cp = "\"src;bin;lib;lib/*"
+cp = "\"src"+suffix+"bin"+suffix+"lib"+suffix+"lib/*"
 cplib = ""
 
 if(exists(".lib")):
     for x in getLines(".lib"):
-        cplib+=";"+x
+        cplib+=suffix+x
  
 cp+=cplib
 
 cp+="\""
 
+print(cp)
 
 for line in javac:
     os.system("javac -cp "+cp+" -d bin "+line)

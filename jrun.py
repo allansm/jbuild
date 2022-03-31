@@ -6,6 +6,10 @@ from allansm.fileHandle import *
 from allansm.util import *
 from allansm.argsHandle import *
 
+suffix=":"
+if(isWindows()):
+    suffix=";"
+
 args = getArgs(["--args","--index"])
 
 bin = getAllFiles("bin")
@@ -37,18 +41,18 @@ try:
 except:
     dummy = ""
 
-cp = "\"src;bin"
+cp = "\"src"+suffix+"bin"
 cplib = ""
 
 if(exists("lib")):
-    cp+=";lib"
+    cp+=suffix+"lib"
     lib = getAllFiles("lib")
     for f in lib:
-        cplib+=";"+f
+        cplib+=suffix+f
 
 if(exists(".lib")):
     for x in getLines(".lib"):
-        cplib+=";"+x
+        cplib+=suffix+x
         
 cp+=cplib
 
@@ -58,6 +62,8 @@ clear()
 call("echo @echo off > bat/"+cn+".bat",shell=True)
 call("echo cd .. >> bat/"+cn+".bat",shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
+
+print(cp)
 
 if(args.args != None):
     call("java -classpath "+cp+" "+package[index]+" "+args.args,shell=True)
