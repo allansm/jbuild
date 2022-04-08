@@ -1,8 +1,14 @@
-from allansm.argsHandle import *
+from jcore import *
 from subprocess import call
-from allansm.fileHandle import *
+import argparse
 
-args = getArgs(["cp","package","--args"])
+parser = argparse.ArgumentParser()
+
+parser.add_argument("cp")
+parser.add_argument("package")
+parser.add_argument("--args", required=False)
+
+args = parser.parse_args()
 
 args.cp = args.cp.replace("\\","/")
 

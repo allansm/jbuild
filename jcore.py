@@ -1,5 +1,25 @@
+from os.path import exists
+from os import remove
+
+def writeFile(fn, data):
+    f = open(fn, "w")
+    f.write(data)
+    f.close()
+
+def readFile(fn):
+    f = open(fn, "r")
+    data = f.read()
+    f.close()
+
+    return data
+
+def ls(path=".", ext="*"):
+    from glob import glob
+
+    return glob(path+"/"+ext)
+
 def getLines(path):
-    f = open(path)
+    f = open(path, "r") 
     data = f.read().split("\n")
     f.close()
 

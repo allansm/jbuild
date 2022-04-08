@@ -1,6 +1,5 @@
 import os
-from allansm.fileHandle import *
-from allansm.util import *
+from jcore import *
 from shutil import rmtree
 
 suffix = ":"

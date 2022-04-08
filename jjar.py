@@ -1,8 +1,16 @@
-from allansm.argsHandle import *
-from allansm.fileHandle import *
-from os import system,chdir
+from jcore import *
+from os import system, chdir
+import argparse
 
-args = getArgs(["package","?runnable","?r","?all","?build"])
+parser = argparse.ArgumentParser()
+
+parser.add_argument("package")
+parser.add_argument("--runnable", action="store_true", dest="runnable")
+parser.add_argument("--r", action="store_true", dest="r")
+parser.add_argument("--all", action="store_true", dest="all")
+parser.add_argument("--build", action="store_true", dest="build")
+
+args = parser.parse_args()
 
 if(args.build):
     import jbuild
@@ -61,7 +69,11 @@ print(jar)
 chdir("bin")
 
 if(args.runnable or args.r):
-    remove("MANIFEST.MF")
+    try:
+        remove("MANIFEST.MF")
+    except:
+        e=0
+
     writeFile("MANIFEST.MF",manifest)
 
     print(readFile("MANIFEST.MF"))
