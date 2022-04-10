@@ -28,11 +28,14 @@ for b in bin:
     i = i + 1
 
 index = args.index
+
 if(index == None):
     if(len(package) == 1):
         index = 0
     else:
         index = int(input("index:"))
+else:
+    index = int(index)
 
 cn = package[index].split(".")[-1]
 
@@ -74,3 +77,4 @@ if(args.args != None):
     call("java -classpath "+cp+" "+package[index]+" "+args.args,shell=True)
 else:
     call("java -classpath "+cp+" "+package[index],shell=True)
+
