@@ -1,5 +1,4 @@
 from os.path import exists
-from os import remove
 
 def writeFile(fn, data):
     f = open(fn, "w")
@@ -45,3 +44,20 @@ def isWindows():
         return True
     
     return False
+
+def mkdir(dir):
+    from os import mkdir
+    
+    try:
+        mkdir(dir)
+    except:
+        e=0
+
+def remove(file):
+    from os import remove
+    
+    try:
+        remove(file)
+    except:
+        e=0
+

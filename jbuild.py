@@ -38,7 +38,7 @@ cp+=cplib
 
 cp+="\""
 
-print(cp)
+print("building...")
 
 for line in javac:
     os.system("javac -cp "+cp+" -d bin "+line)

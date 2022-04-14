@@ -2,15 +2,20 @@ import jbuild
 
 import os
 from subprocess import call
-from allansm.fileHandle import *
-from allansm.util import *
-from allansm.argsHandle import *
+from jcore import *
+
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("--args", required=False)
+parser.add_argument("--index", required=False)
+
+args = parser.parse_args()
 
 suffix=":"
 if(isWindows()):
     suffix=";"
-
-args = getArgs(["--args","--index"])
 
 bin = getAllFiles("bin")
 
@@ -39,8 +44,8 @@ else:
 
 cn = package[index].split(".")[-1]
 
-remove("bat")
-remove("bash")
+remove("bat/"+cn+".bat")
+remove("bash/"+cn)
 
 mkdir("bat")
 mkdir("bash")
@@ -62,7 +67,6 @@ cp+=cplib
 
 cp+="\""
 
-clear()
 call("echo @echo off > bat/"+cn+".bat",shell=True)
 call("echo cd .. >> bat/"+cn+".bat",shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
@@ -71,7 +75,8 @@ call("echo #!/bin/bash > bash/"+cn ,shell=True)
 call("echo cd .. >> bash/"+cn, shell=True)
 call("echo java -classpath "+cp+" "+package[index]+" >> bash/"+cn, shell=True)
 
-print(cp)
+
+print("running...\n")
 
 if(args.args != None):
     call("java -classpath "+cp+" "+package[index]+" "+args.args,shell=True)
