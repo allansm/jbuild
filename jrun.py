@@ -67,14 +67,16 @@ cp+=cplib
 
 cp+="\""
 
-call("echo @echo off > bat/"+cn+".bat",shell=True)
-call("echo cd .. >> bat/"+cn+".bat",shell=True)
-call("echo java -classpath "+cp+" "+package[index]+" >> bat/"+cn+".bat",shell=True)
+bat = "@echo off\n"
+bat+= "cd ..\n"
+bat+= "java -classpath "+cp+" "+package[index]
 
-call("echo #!/bin/bash > bash/"+cn ,shell=True)
-call("echo cd .. >> bash/"+cn, shell=True)
-call("echo java -classpath "+cp+" "+package[index]+" >> bash/"+cn, shell=True)
+bash = "#!/bin/bash\n"
+bash+= "cd ..\n"
+bash+= "java -classpath "+cp.replace(";", ":")+" "+package[index]
 
+writeFile("bat/"+cn+".bat", bat)
+writeFile("bash/"+cn, bash)
 
 print("running...\n")
 
