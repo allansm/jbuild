@@ -12,11 +12,21 @@ args = parser.parse_args()
 
 args.cp = args.cp.replace("\\","/")
 
-cp = "\""+args.cp+"/bin;"+args.cp+"/lib;"
+suffix=":"
+if(isWindows()):
+    suffix=";"
+
+cp = "\""+args.cp+"/bin"+suffix+args.cp+"/lib"
+
+if(exists("lib")):
+    cp+=suffix+"lib"
+    lib = getAllFiles("lib")
+    for f in lib:
+        cplib+=suffix+f
 
 if(exists(args.cp+"/.lib")):
     for x in getLines(args.cp+"/.lib"):
-        cp+=";"+x
+        cp+=suffix+x
  
 cp+="\""
 
