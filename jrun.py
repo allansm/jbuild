@@ -28,9 +28,11 @@ for b in bin:
     p2 = p.split("/")
     tmp = "."
     tmp = tmp.join(p2)
-    package.append(tmp.replace("bin.",""))
-    print(str(i)+" : "+package[i])
-    i = i + 1
+    
+    if(not "$" in tmp):
+        package.append(tmp.replace("bin.",""))
+        print(str(i)+" : "+package[i])
+        i = i + 1
 
 index = args.index
 
@@ -64,7 +66,7 @@ if(exists(".lib")):
         cplib+=suffix+x
         
 cp+=cplib
-
+cp+=suffix+classpath()
 cp+="\""
 
 bat = "@echo off\n"

@@ -35,7 +35,7 @@ if(exists(".lib")):
         cplib+=suffix+x
  
 cp+=cplib
-
+cp+=suffix+classpath()
 cp+="\""
 
 print("building...")

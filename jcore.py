@@ -61,3 +61,7 @@ def remove(file):
     except:
         e=0
 
+def classpath():
+    import os
+    return os.getenv("CLASSPATH")
+
