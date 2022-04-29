@@ -30,9 +30,23 @@ for b in bin:
     tmp = tmp.join(p2)
     
     if(not "$" in tmp):
-        package.append(tmp.replace("bin.",""))
-        print(str(i)+" : "+package[i])
-        i = i + 1
+        code = readFile(b.replace("bin", "src").replace("class", "java"))
+        flag = False
+        for n in code.split("\n"):
+            for x in "public static void main".split(" "):
+                if(x in n):
+                    flag = True
+                else:
+                    flag = False
+                    break
+            
+            if(flag):
+                break
+        
+        if(flag):
+            package.append(tmp.replace("bin.",""))
+            print(str(i)+" : "+package[i])
+            i = i + 1
 
 index = args.index
 
