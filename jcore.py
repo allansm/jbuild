@@ -1,4 +1,4 @@
-from os.path import exists
+from os.path import exists, dirname
 
 def writeFile(fn, data):
     f = open(fn, "w")
