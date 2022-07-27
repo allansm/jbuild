@@ -63,5 +63,9 @@ def remove(file):
 
 def classpath():
     import os
+    
+    if(os.getenv("CLASSPATH") == None):
+        return ""
+    
     return os.getenv("CLASSPATH")
 
