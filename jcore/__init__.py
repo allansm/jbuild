@@ -51,7 +51,7 @@ def mkdir(dir):
     try:
         mkdir(dir)
     except:
-        e=0
+        pass
 
 def remove(file):
     from os import remove
@@ -59,7 +59,7 @@ def remove(file):
     try:
         remove(file)
     except:
-        e=0
+        pass
 
 def classpath():
     import os
